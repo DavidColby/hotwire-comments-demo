@@ -1,0 +1,17 @@
+<%= turbo_frame_tag @project do %>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @project.name %>
+  </p>
+
+  <%= render partial: "comments/form", locals: { comment: @comment } %>
+  <%= turbo_stream_from @project, :comments %>
+  <div id="<%= "#{dom_id(@project)}_comments" %>">
+    <%= render @project.comments %>
+  </div>
+
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Back', projects_path %>
+<% end %>
