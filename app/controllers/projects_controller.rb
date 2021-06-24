@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
-    @comment = Comment.new
   end
 
   # GET /projects/new

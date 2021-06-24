@@ -6,10 +6,10 @@
     <%= @project.name %>
   </p>
 
-  <%= render partial: "comments/form", locals: { comment: @comment } %>
+  <%= render partial: "comments/form", locals: { comment: Comment.new } %>
   <%= turbo_stream_from @project, :comments %>
   <div id="<%= "#{dom_id(@project)}_comments" %>">
-    <%= render @project.comments %>
+    <%= render @project.comments.order(created_at: :desc) %>
   </div>
 
   <%= link_to 'Edit', edit_project_path(@project) %> |
